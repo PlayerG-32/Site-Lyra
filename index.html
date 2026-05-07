@@ -130,17 +130,44 @@
     }
 
     .hero-title {
-      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-size: 2.2rem;
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.15;
       color: var(--text-dark);
     }
 
+    @media (min-width: 576px) {
+      .hero-title { font-size: 3rem; }
+    }
+
+    @media (min-width: 992px) {
+      .hero-title { font-size: 4.5rem; }
+    }
+
     .hero-sub {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-muted);
       max-width: 500px;
       margin: 1.25rem auto 2rem;
+      padding: 0 0.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 576px) {
+      .hero-btns {
+        flex-direction: row;
+        justify-content: center;
+        max-width: none;
+      }
     }
 
     .btn-primary-custom {
@@ -148,14 +175,20 @@
       color: #fff;
       border: none;
       border-radius: 50px;
-      padding: 0.8rem 2rem;
+      padding: 0.85rem 2rem;
       font-weight: 600;
       font-size: 1rem;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       transition: background 0.2s, transform 0.2s;
       text-decoration: none;
+      width: 100%;
+    }
+
+    @media (min-width: 576px) {
+      .btn-primary-custom { width: auto; }
     }
 
     .btn-primary-custom:hover {
@@ -174,6 +207,14 @@
       font-size: 1rem;
       transition: all 0.2s;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    @media (min-width: 576px) {
+      .btn-outline-custom { width: auto; }
     }
 
     .btn-outline-custom:hover {
@@ -209,9 +250,23 @@
     }
 
     .section-title {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: 1.75rem;
       font-weight: 800;
       text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .section-title { font-size: 2.5rem; }
+    }
+
+    @media (min-width: 992px) {
+      .section-title { font-size: 3rem; }
+    }
+
+    /* mobile section padding */
+    @media (max-width: 767px) {
+      section { padding: 3.5rem 0; }
+      .section-badge { flex-wrap: wrap; }
     }
 
     .section-underline {
@@ -380,8 +435,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 280px;
+      min-height: 220px;
       position: relative;
+    }
+
+    @media (min-width: 992px) {
+      .game-visual { min-height: 100%; }
     }
 
     .game-visual .bi-controller {
@@ -527,7 +586,7 @@
       <i class="bi bi-stars hero-star"></i>
       <h1 class="hero-title">Transformando Ideias em<br>Experiências</h1>
       <p class="hero-sub">Criamos jogos inovadores que conectam pessoas e impactam positivamente o mundo</p>
-      <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <div class="hero-btns">
         <a href="#sobre-o-jogo" class="btn-primary-custom">
           <i class="bi bi-controller"></i> Conheça Nosso Jogo <i class="bi bi-lightning-charge-fill"></i>
         </a>
