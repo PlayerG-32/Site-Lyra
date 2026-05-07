@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StarPlay Studio</title>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -23,16 +20,24 @@
       --bg-section: #f4f2fb;
     }
 
-    * { scroll-behavior: smooth; }
+    * { 
+      scroll-behavior: smooth; 
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 300; /* Peso Light por padrão */
       color: var(--text-dark);
       background: #fff;
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 300; /* Títulos em Light como solicitado */
     }
 
     /* ── NAVBAR ── */
@@ -43,8 +48,8 @@
     }
 
     .navbar-brand {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 700; /* Brand um pouco mais forte para destaque */
       font-size: 1.25rem;
       color: var(--text-dark);
       display: flex;
@@ -58,7 +63,7 @@
     }
 
     .nav-link {
-      font-weight: 500;
+      font-weight: 400;
       font-size: 0.85rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -130,26 +135,33 @@
     }
 
     .hero-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      line-height: 1.15;
+      font-size: 2.25rem;
+      font-weight: 300; /* Estilo Light */
+      line-height: 1.2;
       color: var(--text-dark);
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
-    @media (min-width: 576px) {
-      .hero-title { font-size: 3rem; }
+    @media (min-width: 480px) {
+      .hero-title { font-size: 2.75rem; }
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 4rem; }
     }
 
     @media (min-width: 992px) {
-      .hero-title { font-size: 4.5rem; }
+      .hero-title { font-size: 5rem; }
     }
 
     .hero-sub {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 500px;
+      max-width: 600px;
       margin: 1.25rem auto 2rem;
       padding: 0 0.5rem;
+      font-weight: 300;
     }
 
     .hero-btns {
@@ -176,7 +188,7 @@
       border: none;
       border-radius: 50px;
       padding: 0.85rem 2rem;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 1rem;
       display: inline-flex;
       align-items: center;
@@ -200,10 +212,10 @@
     .btn-outline-custom {
       background: transparent;
       color: var(--purple-btn);
-      border: 2px solid var(--purple-btn);
+      border: 1px solid var(--purple-btn);
       border-radius: 50px;
       padding: 0.75rem 2rem;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 1rem;
       transition: all 0.2s;
       text-decoration: none;
@@ -222,7 +234,6 @@
       color: var(--purple);
     }
 
-    /* decorative stars scattered */
     .deco-star {
       position: absolute;
       color: var(--purple-light);
@@ -250,31 +261,22 @@
     }
 
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 800;
+      font-size: 2rem;
+      font-weight: 300;
       text-align: center;
     }
 
     @media (min-width: 768px) {
-      .section-title { font-size: 2.5rem; }
-    }
-
-    @media (min-width: 992px) {
-      .section-title { font-size: 3rem; }
-    }
-
-    /* mobile section padding */
-    @media (max-width: 767px) {
-      section { padding: 3.5rem 0; }
-      .section-badge { flex-wrap: wrap; }
+      .section-title { font-size: 2.75rem; }
     }
 
     .section-underline {
-      width: 60px;
-      height: 3px;
+      width: 40px;
+      height: 2px;
       background: var(--purple);
       margin: 0.75rem auto 0;
       border-radius: 4px;
+      opacity: 0.5;
     }
 
     /* ── QUEM SOMOS ── */
@@ -284,9 +286,9 @@
 
     .missao-card {
       background: #fff;
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 2.5rem;
-      box-shadow: 0 4px 30px rgba(107,63,160,0.08);
+      box-shadow: 0 10px 40px rgba(107,63,160,0.05);
       height: 100%;
     }
 
@@ -300,25 +302,25 @@
     .valor-item {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-bottom: 1.5rem;
     }
 
     .valor-icon {
-      background: var(--purple-btn);
-      color: #fff;
-      border-radius: 14px;
-      width: 52px;
-      height: 52px;
+      background: var(--purple-pale);
+      color: var(--purple-btn);
+      border-radius: 12px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       flex-shrink: 0;
     }
 
     .valor-text h5 {
-      font-weight: 700;
+      font-weight: 400;
       margin-bottom: 0.25rem;
     }
 
@@ -326,6 +328,7 @@
       color: var(--text-muted);
       margin: 0;
       font-size: 0.95rem;
+      font-weight: 300;
     }
 
     /* ── ODS ── */
@@ -336,46 +339,40 @@
     .ods-card {
       background: #fff;
       border: 1px solid var(--purple-pale);
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 2rem;
       height: 100%;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .ods-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(107,63,160,0.12);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 45px rgba(107,63,160,0.08);
     }
 
     .ods-number {
       background: var(--purple-btn);
       color: #fff;
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.1rem;
       margin-bottom: 1.25rem;
     }
 
     .ods-card h5 {
-      font-weight: 700;
+      font-weight: 400;
       margin-bottom: 0.5rem;
     }
 
     .ods-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-    }
-
-    .ods-stars {
-      color: var(--purple);
-      font-size: 0.9rem;
-      margin-top: 1rem;
+      font-weight: 300;
     }
 
     /* ── SOBRE O JOGO ── */
@@ -385,49 +382,36 @@
 
     .game-card {
       background: #fff;
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 4px 30px rgba(107,63,160,0.08);
+      box-shadow: 0 10px 40px rgba(107,63,160,0.05);
     }
 
     .game-info {
-      padding: 2.5rem;
+      padding: 3rem;
     }
 
-    .game-info .game-header {
+    .game-header {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 1rem;
     }
 
-    .game-info .game-header .bi {
-      color: var(--purple);
-      font-size: 1.5rem;
-    }
-
-    .game-info h3 {
-      font-size: 1.6rem;
-      font-weight: 800;
+    .game-header h3 {
+      font-size: 1.75rem;
       margin: 0;
     }
 
     .game-info .lead {
+      font-weight: 300;
       color: var(--text-muted);
-      font-size: 0.97rem;
-      line-height: 1.7;
-    }
-
-    .game-info ul {
-      list-style: disc;
-      padding-left: 1.2rem;
-      margin: 1.25rem 0 1.75rem;
-      color: var(--text-dark);
+      line-height: 1.8;
     }
 
     .game-info ul li {
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 0.75rem;
     }
 
     .game-visual {
@@ -435,112 +419,44 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 220px;
-      position: relative;
+      min-height: 300px;
     }
-
-    @media (min-width: 992px) {
-      .game-visual { min-height: 100%; }
-    }
-
-    .game-visual .bi-controller {
-      font-size: 7rem;
-      color: var(--purple);
-      opacity: 0.9;
-    }
-
-    .game-visual .sparkle {
-      position: absolute;
-      font-size: 1.8rem;
-      color: var(--purple-light);
-    }
-
-    .game-visual .sparkle-1 { top: 20%; right: 25%; }
-    .game-visual .sparkle-2 { bottom: 25%; left: 22%; }
 
     /* ── FOOTER ── */
     footer {
       background: #fff;
       border-top: 1px solid #ede9f6;
-      padding: 3.5rem 0 1.5rem;
+      padding: 4rem 0 2rem;
     }
 
     .footer-brand {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-tagline {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
     }
 
     .footer-heading {
-      font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
     }
-
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links li { margin-bottom: 0.5rem; }
 
     .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--purple); }
-
-    .footer-email {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .social-btn {
-      width: 40px;
-      height: 40px;
-      border: 1.5px solid var(--purple-pale);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--purple);
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .social-btn:hover {
-      background: var(--purple-pale);
-      border-color: var(--purple);
-      color: var(--purple);
+      font-weight: 300;
     }
 
     .footer-bottom {
       border-top: 1px solid #ede9f6;
-      margin-top: 2.5rem;
-      padding-top: 1.25rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.875rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      font-weight: 300;
     }
 
-    /* ── SMOOTH OFFSET FOR FIXED NAVBAR ── */
     section[id], #inicio {
       scroll-margin-top: 70px;
     }
@@ -548,7 +464,6 @@
 </head>
 <body>
 
-  <!-- ══ NAVBAR ══ -->
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="#inicio">
@@ -557,8 +472,7 @@
       </a>
 
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navMenu"
-              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+              data-bs-toggle="collapse" data-bs-target="#navMenu">
         <i class="bi bi-list fs-2"></i>
       </button>
 
@@ -574,28 +488,21 @@
     </div>
   </nav>
 
-  <!-- ══ HERO ══ -->
   <section id="inicio">
     <div class="hero-glow"></div>
-    <i class="bi bi-stars deco-star" style="top:15%;left:8%;font-size:2rem;"></i>
-    <i class="bi bi-stars deco-star" style="top:20%;right:10%;font-size:1.2rem;"></i>
-    <i class="bi bi-stars deco-star" style="bottom:20%;left:15%;font-size:1rem;"></i>
-    <i class="bi bi-stars deco-star" style="bottom:25%;right:8%;font-size:1.6rem;"></i>
-
     <div class="container text-center" style="position:relative;z-index:1;">
       <i class="bi bi-stars hero-star"></i>
-      <h1 class="hero-title">Transformando Ideias em<br>Experiências</h1>
+      <h1 class="hero-title">Transformando Ideias em Experiências</h1>
       <p class="hero-sub">Criamos jogos inovadores que conectam pessoas e impactam positivamente o mundo</p>
       <div class="hero-btns">
         <a href="#sobre-o-jogo" class="btn-primary-custom">
-          <i class="bi bi-controller"></i> Conheça Nosso Jogo <i class="bi bi-lightning-charge-fill"></i>
+          <i class="bi bi-controller"></i> Conheça Nosso Jogo
         </a>
         <a href="#quem-somos" class="btn-outline-custom">Saiba Mais</a>
       </div>
     </div>
   </section>
 
-  <!-- ══ QUEM SOMOS ══ -->
   <section id="quem-somos">
     <div class="container">
       <div class="section-badge">
@@ -619,25 +526,27 @@
         </div>
 
         <div class="col-lg-6">
-          <div class="valor-item">
-            <div class="valor-icon"><i class="bi bi-trophy"></i></div>
-            <div class="valor-text">
-              <h5>Excelência</h5>
-              <p>Compromisso com a qualidade em cada detalhe</p>
+          <div class="ps-lg-4">
+            <div class="valor-item">
+              <div class="valor-icon"><i class="bi bi-trophy"></i></div>
+              <div class="valor-text">
+                <h5>Excelência</h5>
+                <p>Compromisso com a qualidade em cada detalhe</p>
+              </div>
             </div>
-          </div>
-          <div class="valor-item">
-            <div class="valor-icon"><i class="bi bi-stars"></i></div>
-            <div class="valor-text">
-              <h5>Inovação</h5>
-              <p>Tecnologia de ponta e criatividade sem limites</p>
+            <div class="valor-item">
+              <div class="valor-icon"><i class="bi bi-stars"></i></div>
+              <div class="valor-text">
+                <h5>Inovação</h5>
+                <p>Tecnologia de ponta e criatividade sem limites</p>
+              </div>
             </div>
-          </div>
-          <div class="valor-item">
-            <div class="valor-icon"><i class="bi bi-globe2"></i></div>
-            <div class="valor-text">
-              <h5>Impacto Global</h5>
-              <p>Jogos que transcendem fronteiras e culturas</p>
+            <div class="valor-item">
+              <div class="valor-icon"><i class="bi bi-globe2"></i></div>
+              <div class="valor-text">
+                <h5>Impacto Global</h5>
+                <p>Jogos que transcendem fronteiras e culturas</p>
+              </div>
             </div>
           </div>
         </div>
@@ -645,63 +554,44 @@
     </div>
   </section>
 
-  <!-- ══ ODS ══ -->
   <section id="ods">
     <div class="container">
       <div class="section-badge">
         <i class="bi bi-stars"></i>
-        <h2 class="section-title mb-0">Objetivos de Desenvolvimento Sustentável</h2>
+        <h2 class="section-title mb-0">Objetivos Sustentáveis</h2>
         <i class="bi bi-stars"></i>
       </div>
       <div class="section-underline mb-3"></div>
-      <p class="text-center text-muted mb-5">
-        Nossos jogos estão alinhados com os ODS da ONU, promovendo educação, igualdade e ação climática
+      <p class="text-center text-muted mb-5 fw-light">
+        Nossos jogos estão alinhados com os ODS da ONU
       </p>
 
       <div class="row g-4">
         <div class="col-md-4">
           <div class="ods-card">
-            <div class="ods-number">4</div>
+            <div class="ods-number">04</div>
             <h5>Educação de Qualidade</h5>
-            <p>Jogos educativos que estimulam o aprendizado através da diversão</p>
-            <div class="ods-stars">
-              <i class="bi bi-stars"></i>
-              <i class="bi bi-stars"></i>
-              <i class="bi bi-stars"></i>
-            </div>
+            <p>Jogos educativos que estimulam o aprendizado através da diversão constante.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="ods-card">
             <div class="ods-number">10</div>
-            <h5>Redução das Desigualdades</h5>
-            <p>Promovendo inclusão e acessibilidade em nossas plataformas</p>
-            <div class="ods-stars">
-              <i class="bi bi-stars"></i>
-              <i class="bi bi-stars"></i>
-              <i class="bi bi-stars"></i>
-            </div>
+            <h5>Redução de Desigualdades</h5>
+            <p>Promovendo inclusão e acessibilidade em todas as nossas plataformas digitais.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="ods-card">
             <div class="ods-number">13</div>
-            <h5>Ação Contra a Mudança do Clima</h5>
-            <p>Conscientização ambiental através de narrativas impactantes</p>
-            <div class="ods-stars">
-              <i class="bi bi-stars"></i>
-              <i class="bi bi-stars"></i>
-              <i class="bi bi-stars"></i>
-            </div>
+            <h5>Ação Climática</h5>
+            <p>Conscientização ambiental através de narrativas impactantes e imersivas.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ SOBRE O JOGO ══ -->
   <section id="sobre-o-jogo">
     <div class="container">
       <div class="section-badge">
@@ -713,31 +603,28 @@
 
       <div class="game-card">
         <div class="row g-0">
-          <div class="col-lg-6">
+          <div class="col-lg-7">
             <div class="game-info">
               <div class="game-header">
-                <i class="bi bi-controller"></i>
+                <i class="bi bi-controller text-primary"></i>
                 <h3>StarQuest: Guardiões do Futuro</h3>
               </div>
-              <p class="lead">
-                Uma aventura épica que combina ação, estratégia e educação. Explore galáxias,
-                resolva desafios ambientais e aprenda sobre sustentabilidade enquanto se diverte.
+              <p class="lead mb-4">
+                Uma aventura épica que combina ação, estratégia e educação. Explore galáxias e resolva desafios ambientais.
               </p>
-              <ul>
-                <li>Multiplayer cooperativo para até 4 jogadores</li>
-                <li>Sistema de progressão baseado em conquistas sustentáveis</li>
-                <li>Gráficos de última geração com motor próprio</li>
+              <ul class="list-unstyled">
+                <li><i class="bi bi-check2-circle me-2 text-primary"></i> Multiplayer cooperativo online</li>
+                <li><i class="bi bi-check2-circle me-2 text-primary"></i> Sistema de progressão sustentável</li>
+                <li><i class="bi bi-check2-circle me-2 text-primary"></i> Gráficos de última geração</li>
               </ul>
-              <a href="#contato" class="btn-primary-custom">
-                Jogue Agora <i class="bi bi-lightning-charge-fill"></i>
+              <a href="#contato" class="btn-primary-custom mt-4">
+                Jogue Agora <i class="bi bi-arrow-right ms-2"></i>
               </a>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-5">
             <div class="game-visual">
-              <i class="bi bi-stars sparkle sparkle-1"></i>
-              <i class="bi bi-controller" style="font-size:7rem;color:var(--purple);"></i>
-              <i class="bi bi-stars sparkle sparkle-2"></i>
+              <i class="bi bi-controller" style="font-size:8rem;color:var(--purple);opacity:0.8;"></i>
             </div>
           </div>
         </div>
@@ -745,77 +632,36 @@
     </div>
   </section>
 
-  <!-- ══ FOOTER / CONTATO ══ -->
   <footer id="contato">
     <div class="container">
       <div class="row g-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-brand">
-            <i class="bi bi-stars" style="color:var(--purple);"></i>
-            StarPlay Studio
-          </div>
-          <p class="footer-tagline">Criando o futuro dos jogos,<br>uma estrela de cada vez.</p>
+        <div class="col-lg-4">
+          <div class="footer-brand">StarPlay Studio</div>
+          <p class="text-muted fw-light">Criando o futuro dos jogos,<br>uma estrela de cada vez.</p>
         </div>
-
-        <div class="col-lg-4 col-md-6">
-          <p class="footer-heading">Links Rápidos</p>
-          <ul class="footer-links">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#quem-somos">Quem Somos</a></li>
-            <li><a href="#ods">ODS</a></li>
-            <li><a href="#sobre-o-jogo">Sobre o Jogo</a></li>
+        <div class="col-lg-4">
+          <p class="footer-heading">Navegação</p>
+          <ul class="list-unstyled footer-links">
+            <li class="mb-2"><a href="#inicio" class="text-decoration-none text-muted">Início</a></li>
+            <li class="mb-2"><a href="#quem-somos" class="text-decoration-none text-muted">Quem Somos</a></li>
+            <li class="mb-2"><a href="#sobre-o-jogo" class="text-decoration-none text-muted">O Jogo</a></li>
           </ul>
         </div>
-
-        <div class="col-lg-4 col-md-6">
-          <p class="footer-heading">Conecte-se</p>
-          <p class="footer-email">contato@starplaystudio.com</p>
-          <div class="d-flex gap-2">
-            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="social-btn" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+        <div class="col-lg-4">
+          <p class="footer-heading">Contato</p>
+          <p class="text-muted fw-light">contato@starplaystudio.com</p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" class="text-purple fs-5"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-purple fs-5"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        © 2026 StarPlay Studio. Todos os direitos reservados.
+      <div class="footer-bottom text-center text-muted">
+        <small>© 2026 StarPlay Studio. Todos os direitos reservados.</small>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // Active nav link on scroll
-    const sections = document.querySelectorAll('section[id], footer[id]');
-    const navLinks = document.querySelectorAll('.nav-link:not(.btn-contato)');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + entry.target.id) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.4 });
-
-    sections.forEach(s => observer.observe(s));
-
-    // Close mobile menu on link click
-    document.querySelectorAll('.navbar-nav .nav-link, .btn-contato').forEach(link => {
-      link.addEventListener('click', () => {
-        const collapse = document.getElementById('navMenu');
-        if (collapse.classList.contains('show')) {
-          bootstrap.Collapse.getInstance(collapse)?.hide();
-        }
-      });
-    });
-  </script>
 </body>
 </html>
