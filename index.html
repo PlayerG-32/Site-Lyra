@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarPlay Studio</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --purple: #6b3fa0;
+      --purple-light: #8b5cf6;
+      --purple-pale: #ede9f6;
+      --purple-btn: #7c3aed;
+      --text-dark: #1a1a2e;
+      --text-muted: #6b7280;
+      --bg-section: #f4f2fb;
+    }
+
+    * { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #ede9f6;
+      padding: 0.75rem 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .star-icon {
+      color: var(--purple);
+      font-size: 1.4rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dark) !important;
+      padding: 0.5rem 1rem !important;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--purple) !important;
+    }
+
+    .btn-contato {
+      background: var(--purple-btn);
+      color: #fff !important;
+      border-radius: 50px;
+      padding: 0.5rem 1.4rem !important;
+      font-size: 0.875rem !important;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-contato:hover {
+      background: var(--purple);
+      transform: translateY(-1px);
+    }
+
+    .navbar-toggler {
+      border: none;
+      color: var(--purple);
+    }
+
+    /* ── HERO ── */
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      pointer-events: none;
+    }
+
+    .hero-star {
+      font-size: 4rem;
+      color: var(--purple);
+      display: block;
+      margin-bottom: 1.5rem;
+      animation: pulse-star 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-star {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-dark);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 1.25rem auto 2rem;
+    }
+
+    .btn-primary-custom {
+      background: var(--purple-btn);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary-custom:hover {
+      background: var(--purple);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--purple-btn);
+      border: 2px solid var(--purple-btn);
+      border-radius: 50px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--purple-pale);
+      color: var(--purple);
+    }
+
+    /* decorative stars scattered */
+    .deco-star {
+      position: absolute;
+      color: var(--purple-light);
+      opacity: 0.25;
+      font-size: 1.5rem;
+      pointer-events: none;
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-badge .bi-stars {
+      color: var(--purple);
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .section-underline {
+      width: 60px;
+      height: 3px;
+      background: var(--purple);
+      margin: 0.75rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* ── QUEM SOMOS ── */
+    #quem-somos {
+      background: var(--bg-section);
+    }
+
+    .missao-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 30px rgba(107,63,160,0.08);
+      height: 100%;
+    }
+
+    .missao-card .bi {
+      font-size: 2.5rem;
+      color: var(--purple);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .valor-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .valor-icon {
+      background: var(--purple-btn);
+      color: #fff;
+      border-radius: 14px;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .valor-text h5 {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .valor-text p {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── ODS ── */
+    #ods {
+      background: #fff;
+    }
+
+    .ods-card {
+      background: #fff;
+      border: 1px solid var(--purple-pale);
+      border-radius: 20px;
+      padding: 2rem;
+      height: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .ods-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(107,63,160,0.12);
+    }
+
+    .ods-number {
+      background: var(--purple-btn);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .ods-card h5 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .ods-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .ods-stars {
+      color: var(--purple);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* ── SOBRE O JOGO ── */
+    #sobre-o-jogo {
+      background: var(--bg-section);
+    }
+
+    .game-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(107,63,160,0.08);
+    }
+
+    .game-info {
+      padding: 2.5rem;
+    }
+
+    .game-info .game-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .game-info .game-header .bi {
+      color: var(--purple);
+      font-size: 1.5rem;
+    }
+
+    .game-info h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .game-info .lead {
+      color: var(--text-muted);
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+
+    .game-info ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin: 1.25rem 0 1.75rem;
+      color: var(--text-dark);
+    }
+
+    .game-info ul li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .game-visual {
+      background: var(--purple-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+    }
+
+    .game-visual .bi-controller {
+      font-size: 7rem;
+      color: var(--purple);
+      opacity: 0.9;
+    }
+
+    .game-visual .sparkle {
+      position: absolute;
+      font-size: 1.8rem;
+      color: var(--purple-light);
+    }
+
+    .game-visual .sparkle-1 { top: 20%; right: 25%; }
+    .game-visual .sparkle-2 { bottom: 25%; left: 22%; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      border-top: 1px solid #ede9f6;
+      padding: 3.5rem 0 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-tagline {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .footer-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li { margin-bottom: 0.5rem; }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--purple); }
+
+    .footer-email {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--purple-pale);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple);
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .social-btn:hover {
+      background: var(--purple-pale);
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #ede9f6;
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* ── SMOOTH OFFSET FOR FIXED NAVBAR ── */
+    section[id], #inicio {
+      scroll-margin-top: 70px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#inicio">
+        <i class="bi bi-stars star-icon"></i>
+        StarPlay Studio
+      </a>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem Somos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ods">ODS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre-o-jogo">Sobre o Jogo</a></li>
+        </ul>
+        <a href="#contato" class="nav-link btn-contato ms-lg-3">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="inicio">
+    <div class="hero-glow"></div>
+    <i class="bi bi-stars deco-star" style="top:15%;left:8%;font-size:2rem;"></i>
+    <i class="bi bi-stars deco-star" style="top:20%;right:10%;font-size:1.2rem;"></i>
+    <i class="bi bi-stars deco-star" style="bottom:20%;left:15%;font-size:1rem;"></i>
+    <i class="bi bi-stars deco-star" style="bottom:25%;right:8%;font-size:1.6rem;"></i>
+
+    <div class="container text-center" style="position:relative;z-index:1;">
+      <i class="bi bi-stars hero-star"></i>
+      <h1 class="hero-title">Transformando Ideias em<br>Experiências</h1>
+      <p class="hero-sub">Criamos jogos inovadores que conectam pessoas e impactam positivamente o mundo</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="#sobre-o-jogo" class="btn-primary-custom">
+          <i class="bi bi-controller"></i> Conheça Nosso Jogo <i class="bi bi-lightning-charge-fill"></i>
+        </a>
+        <a href="#quem-somos" class="btn-outline-custom">Saiba Mais</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ QUEM SOMOS ══ -->
+  <section id="quem-somos">
+    <div class="container">
+      <div class="section-badge">
+        <i class="bi bi-stars"></i>
+        <h2 class="section-title mb-0">Quem Somos</h2>
+        <i class="bi bi-stars"></i>
+      </div>
+      <div class="section-underline mb-5"></div>
+
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <div class="missao-card">
+            <i class="bi bi-people"></i>
+            <h4>Nossa Missão</h4>
+            <p class="text-muted" style="line-height:1.8;">
+              Somos uma startup de tecnologia focada em criar experiências de jogos únicas e memoráveis.
+              Nossa equipe combina talento criativo com expertise técnica para desenvolver produtos que
+              não apenas entretêm, mas também promovem valores positivos e desenvolvimento sustentável.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-trophy"></i></div>
+            <div class="valor-text">
+              <h5>Excelência</h5>
+              <p>Compromisso com a qualidade em cada detalhe</p>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-stars"></i></div>
+            <div class="valor-text">
+              <h5>Inovação</h5>
+              <p>Tecnologia de ponta e criatividade sem limites</p>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-globe2"></i></div>
+            <div class="valor-text">
+              <h5>Impacto Global</h5>
+              <p>Jogos que transcendem fronteiras e culturas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ODS ══ -->
+  <section id="ods">
+    <div class="container">
+      <div class="section-badge">
+        <i class="bi bi-stars"></i>
+        <h2 class="section-title mb-0">Objetivos de Desenvolvimento Sustentável</h2>
+        <i class="bi bi-stars"></i>
+      </div>
+      <div class="section-underline mb-3"></div>
+      <p class="text-center text-muted mb-5">
+        Nossos jogos estão alinhados com os ODS da ONU, promovendo educação, igualdade e ação climática
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="ods-card">
+            <div class="ods-number">4</div>
+            <h5>Educação de Qualidade</h5>
+            <p>Jogos educativos que estimulam o aprendizado através da diversão</p>
+            <div class="ods-stars">
+              <i class="bi bi-stars"></i>
+              <i class="bi bi-stars"></i>
+              <i class="bi bi-stars"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ods-card">
+            <div class="ods-number">10</div>
+            <h5>Redução das Desigualdades</h5>
+            <p>Promovendo inclusão e acessibilidade em nossas plataformas</p>
+            <div class="ods-stars">
+              <i class="bi bi-stars"></i>
+              <i class="bi bi-stars"></i>
+              <i class="bi bi-stars"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="ods-card">
+            <div class="ods-number">13</div>
+            <h5>Ação Contra a Mudança do Clima</h5>
+            <p>Conscientização ambiental através de narrativas impactantes</p>
+            <div class="ods-stars">
+              <i class="bi bi-stars"></i>
+              <i class="bi bi-stars"></i>
+              <i class="bi bi-stars"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SOBRE O JOGO ══ -->
+  <section id="sobre-o-jogo">
+    <div class="container">
+      <div class="section-badge">
+        <i class="bi bi-stars"></i>
+        <h2 class="section-title mb-0">Sobre o Jogo</h2>
+        <i class="bi bi-stars"></i>
+      </div>
+      <div class="section-underline mb-5"></div>
+
+      <div class="game-card">
+        <div class="row g-0">
+          <div class="col-lg-6">
+            <div class="game-info">
+              <div class="game-header">
+                <i class="bi bi-controller"></i>
+                <h3>StarQuest: Guardiões do Futuro</h3>
+              </div>
+              <p class="lead">
+                Uma aventura épica que combina ação, estratégia e educação. Explore galáxias,
+                resolva desafios ambientais e aprenda sobre sustentabilidade enquanto se diverte.
+              </p>
+              <ul>
+                <li>Multiplayer cooperativo para até 4 jogadores</li>
+                <li>Sistema de progressão baseado em conquistas sustentáveis</li>
+                <li>Gráficos de última geração com motor próprio</li>
+              </ul>
+              <a href="#contato" class="btn-primary-custom">
+                Jogue Agora <i class="bi bi-lightning-charge-fill"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="game-visual">
+              <i class="bi bi-stars sparkle sparkle-1"></i>
+              <i class="bi bi-controller" style="font-size:7rem;color:var(--purple);"></i>
+              <i class="bi bi-stars sparkle sparkle-2"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER / CONTATO ══ -->
+  <footer id="contato">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <i class="bi bi-stars" style="color:var(--purple);"></i>
+            StarPlay Studio
+          </div>
+          <p class="footer-tagline">Criando o futuro dos jogos,<br>uma estrela de cada vez.</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <p class="footer-heading">Links Rápidos</p>
+          <ul class="footer-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#ods">ODS</a></li>
+            <li><a href="#sobre-o-jogo">Sobre o Jogo</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <p class="footer-heading">Conecte-se</p>
+          <p class="footer-email">contato@starplaystudio.com</p>
+          <div class="d-flex gap-2">
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-btn" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 StarPlay Studio. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('.nav-link:not(.btn-contato)');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.navbar-nav .nav-link, .btn-contato').forEach(link => {
+      link.addEventListener('click', () => {
+        const collapse = document.getElementById('navMenu');
+        if (collapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(collapse)?.hide();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
