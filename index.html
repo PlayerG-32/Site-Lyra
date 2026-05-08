@@ -18,6 +18,7 @@
       --text-dark: #1a1a2e;
       --text-muted: #6b7280;
       --bg-section: #f4f2fb;
+      --white: #ffffff;
     }
 
     * { 
@@ -30,14 +31,14 @@
 
     body {
       font-family: 'Nunito Sans', sans-serif;
-      font-weight: 300; /* Peso Light por padrão */
+      font-weight: 300;
       color: var(--text-dark);
       background: #fff;
     }
 
     h1, h2, h3, h4 {
       font-family: 'Nunito Sans', sans-serif;
-      font-weight: 300; /* Títulos em Light como solicitado */
+      font-weight: 300;
     }
 
     /* ── NAVBAR ── */
@@ -49,7 +50,7 @@
 
     .navbar-brand {
       font-family: 'Nunito Sans', sans-serif;
-      font-weight: 700; /* Brand um pouco mais forte para destaque */
+      font-weight: 700;
       font-size: 1.25rem;
       color: var(--text-dark);
       display: flex;
@@ -87,16 +88,6 @@
       transition: background 0.2s, transform 0.2s;
     }
 
-    .btn-contato:hover {
-      background: var(--purple);
-      transform: translateY(-1px);
-    }
-
-    .navbar-toggler {
-      border: none;
-      color: var(--purple);
-    }
-
     /* ── HERO ── */
     #inicio {
       min-height: 100vh;
@@ -109,21 +100,34 @@
       background: #fff;
     }
 
+    /* EFEITO DE 3 CÍRCULOS CONCÊNTRICOS NO HERO-GLOW */
     .hero-glow {
       position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+      width: 1200px;
+      height: 1200px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -60%);
       pointer-events: none;
+      /* Camadas: 
+         1. Centro (0-20%): 30% opacidade
+         2. Meio (20-50%): 15% opacidade
+         3. Ponta (50-85%): 5% opacidade
+      */
+      background: radial-gradient(circle, 
+        rgba(124, 58, 237, 0.5) 0%, 
+        rgba(124, 58, 237, 0.5) 20%, 
+        rgba(124, 58, 237, 0.20) 20%, 
+        rgba(124, 58, 237, 0.20) 50%, 
+        rgba(124, 58, 237, 0.05) 50%, 
+        rgba(124, 58, 237, 0.05) 85%, 
+        transparent 85%);
+      filter: blur(30px); /* Suaviza a transição entre os círculos */
     }
 
     .hero-star {
       font-size: 4rem;
-      color: var(--purple);
+      color: var(--white);
       display: block;
       margin-bottom: 1.5rem;
       animation: pulse-star 3s ease-in-out infinite;
@@ -136,19 +140,9 @@
 
     .hero-title {
       font-size: 2.25rem;
-      font-weight: 300; /* Estilo Light */
+      font-weight: 300;
       line-height: 1.2;
       color: var(--text-dark);
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
-
-    @media (min-width: 480px) {
-      .hero-title { font-size: 2.75rem; }
-    }
-
-    @media (min-width: 768px) {
-      .hero-title { font-size: 4rem; }
     }
 
     @media (min-width: 992px) {
@@ -160,7 +154,6 @@
       color: var(--text-muted);
       max-width: 600px;
       margin: 1.25rem auto 2rem;
-      padding: 0 0.5rem;
       font-weight: 300;
     }
 
@@ -175,11 +168,7 @@
     }
 
     @media (min-width: 576px) {
-      .hero-btns {
-        flex-direction: row;
-        justify-content: center;
-        max-width: none;
-      }
+      .hero-btns { flex-direction: row; justify-content: center; max-width: none; }
     }
 
     .btn-primary-custom {
@@ -189,24 +178,17 @@
       border-radius: 50px;
       padding: 0.85rem 2rem;
       font-weight: 400;
-      font-size: 1rem;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      transition: background 0.2s, transform 0.2s;
-      text-decoration: none;
-      width: 100%;
-    }
-
-    @media (min-width: 576px) {
-      .btn-primary-custom { width: auto; }
+      transition: all 0.2s;
     }
 
     .btn-primary-custom:hover {
       background: var(--purple);
-      color: #fff;
       transform: translateY(-2px);
+      color: #fff;
     }
 
     .btn-outline-custom {
@@ -216,49 +198,16 @@
       border-radius: 50px;
       padding: 0.75rem 2rem;
       font-weight: 400;
-      font-size: 1rem;
-      transition: all 0.2s;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
-    @media (min-width: 576px) {
-      .btn-outline-custom { width: auto; }
+      transition: all 0.2s;
     }
 
     .btn-outline-custom:hover {
       background: var(--purple-pale);
-      color: var(--purple);
-    }
-
-    .deco-star {
-      position: absolute;
-      color: var(--purple-light);
-      opacity: 0.25;
-      font-size: 1.5rem;
-      pointer-events: none;
     }
 
     /* ── SECTION COMMON ── */
-    section {
-      padding: 5rem 0;
-    }
-
-    .section-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-badge .bi-stars {
-      color: var(--purple);
-      font-size: 1.1rem;
-    }
+    section { padding: 5rem 0; }
 
     .section-title {
       font-size: 2rem;
@@ -266,23 +215,16 @@
       text-align: center;
     }
 
-    @media (min-width: 768px) {
-      .section-title { font-size: 2.75rem; }
-    }
-
     .section-underline {
       width: 40px;
       height: 2px;
       background: var(--purple);
       margin: 0.75rem auto 0;
-      border-radius: 4px;
       opacity: 0.5;
     }
 
     /* ── QUEM SOMOS ── */
-    #quem-somos {
-      background: var(--bg-section);
-    }
+    #quem-somos { background: var(--bg-section); }
 
     .missao-card {
       background: #fff;
@@ -291,14 +233,24 @@
       box-shadow: 0 10px 40px rgba(107,63,160,0.05);
       height: 100%;
     }
-
-    .missao-card .bi {
-      font-size: 2.5rem;
-      color: var(--purple);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
+ {<section id="quem-somos">
+  <div class="container">
+    ...
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <div class="missao-card">
+          <img src="image_d16e14.jpg" alt="Sobre Nós - StarPlay Studio" class="sobre-nos-img img-fluid">
+          
+          <h4>Nossa História</h4>
+          <p class="text-muted" style="line-height:1.8;">
+            Somos uma empresa de jogos indie composta por uma equipe de seis membros...
+          </p>
+        </div>
+      </div>
+      ...
+    </div>
+  </div>
+</section> }
     .valor-item {
       display: flex;
       align-items: flex-start;
@@ -315,34 +267,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
       flex-shrink: 0;
     }
 
-    .valor-text h5 {
-      font-weight: 400;
-      margin-bottom: 0.25rem;
-    }
-
-    .valor-text p {
-      color: var(--text-muted);
-      margin: 0;
-      font-size: 0.95rem;
-      font-weight: 300;
-    }
-
     /* ── ODS ── */
-    #ods {
-      background: #fff;
-    }
-
     .ods-card {
       background: #fff;
       border: 1px solid var(--purple-pale);
       border-radius: 24px;
       padding: 2rem;
       height: 100%;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.3s;
     }
 
     .ods-card:hover {
@@ -360,25 +295,11 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1.1rem;
       margin-bottom: 1.25rem;
     }
 
-    .ods-card h5 {
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-
-    .ods-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 300;
-    }
-
     /* ── SOBRE O JOGO ── */
-    #sobre-o-jogo {
-      background: var(--bg-section);
-    }
+    #sobre-o-jogo { background: var(--bg-section); }
 
     .game-card {
       background: #fff;
@@ -387,32 +308,7 @@
       box-shadow: 0 10px 40px rgba(107,63,160,0.05);
     }
 
-    .game-info {
-      padding: 3rem;
-    }
-
-    .game-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .game-header h3 {
-      font-size: 1.75rem;
-      margin: 0;
-    }
-
-    .game-info .lead {
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .game-info ul li {
-      font-weight: 300;
-      margin-bottom: 0.75rem;
-    }
+    .game-info { padding: 3rem; }
 
     .game-visual {
       background: var(--purple-pale);
@@ -429,37 +325,13 @@
       padding: 4rem 0 2rem;
     }
 
-    .footer-brand {
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .footer-heading {
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links a {
-      font-weight: 300;
-    }
-
     .footer-bottom {
       border-top: 1px solid #ede9f6;
       margin-top: 3rem;
       padding-top: 1.5rem;
-      font-weight: 300;
     }
 
-    section[id], #inicio {
-      scroll-margin-top: 70px;
-    }
+    section[id], #inicio { scroll-margin-top: 70px; }
   </style>
 </head>
 <body>
@@ -471,8 +343,7 @@
         StarPlay Studio
       </a>
 
-      <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <i class="bi bi-list fs-2"></i>
       </button>
 
@@ -481,9 +352,10 @@
           <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
           <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem Somos</a></li>
           <li class="nav-item"><a class="nav-link" href="#ods">ODS</a></li>
+	  <li class="nav-item"><a class="nav-link" href="#documentacao">Documentação</a></li>
           <li class="nav-item"><a class="nav-link" href="#sobre-o-jogo">Sobre o Jogo</a></li>
         </ul>
-        <a href="#contato" class="nav-link btn-contato ms-lg-3">Contato</a>
+        <!--<a href="#contato" class="nav-link btn-contato ms-lg-3">Contato</a>-->
       </div>
     </div>
   </nav>
@@ -505,17 +377,15 @@
 
   <section id="quem-somos">
     <div class="container">
-      <div class="section-badge">
-        <i class="bi bi-stars"></i>
-        <h2 class="section-title mb-0">Quem Somos</h2>
-        <i class="bi bi-stars"></i>
+      <div class="text-center mb-5">
+        <h2 class="section-title">Quem Somos</h2>
+        <div class="section-underline"></div>
       </div>
-      <div class="section-underline mb-5"></div>
 
       <div class="row g-4 align-items-center">
         <div class="col-lg-6">
           <div class="missao-card">
-            <i class="bi bi-people"></i>
+            <i class="bi bi-people fs-1 text-purple mb-3 d-block"></i>
             <h4>Nossa Missão</h4>
             <p class="text-muted" style="line-height:1.8;">
               Somos uma empresa de jogos indie composta por uma equipe de seis membros que visam completar o projeto do TCC, aprender sobre a indústria de jogos, aprender programação C# e melhorar as capacidades artísticas.
@@ -529,21 +399,14 @@
               <div class="valor-icon"><i class="bi bi-trophy"></i></div>
               <div class="valor-text">
                 <h5>Excelência</h5>
-                <p>Compromisso com a qualidade em cada detalhe</p>
+                <p>Compromisso com a qualidade em cada detalhe.</p>
               </div>
             </div>
             <div class="valor-item">
               <div class="valor-icon"><i class="bi bi-stars"></i></div>
               <div class="valor-text">
                 <h5>Inovação</h5>
-                <p>Tecnologia de ponta e criatividade sem limites</p>
-              </div>
-            </div>
-            <div class="valor-item">
-              <div class="valor-icon"><i class="bi bi-globe2"></i></div>
-              <div class="valor-text">
-                <h5>Impacto Global</h5>
-                <p>Jogos que transcendem fronteiras e culturas</p>
+                <p>Tecnologia de ponta e criatividade sem limites.</p>
               </div>
             </div>
           </div>
@@ -554,36 +417,31 @@
 
   <section id="ods">
     <div class="container">
-      <div class="section-badge">
-        <i class="bi bi-stars"></i>
-        <h2 class="section-title mb-0">Objetivos Sustentáveis</h2>
-        <i class="bi bi-stars"></i>
+      <div class="text-center mb-5">
+        <h2 class="section-title">Objetivos Sustentáveis</h2>
+        <div class="section-underline"></div>
       </div>
-      <div class="section-underline mb-3"></div>
-      <p class="text-center text-muted mb-5 fw-light">
-        Nossos jogos estão alinhados com os ODS da ONU
-      </p>
 
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="ods-card">
-            <div class="ods-number">04</div>
+          <div class="ods-card text-center">
+            <div class="ods-number mx-auto">04</div>
             <h5>Educação de Qualidade</h5>
-            <p>Jogos educativos que estimulam o aprendizado através da diversão constante.</p>
+            <p class="text-muted">Aprendizado através da diversão.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="ods-card">
-            <div class="ods-number">10</div>
-            <h5>Redução de Desigualdades</h5>
-            <p>Promovendo inclusão e acessibilidade em todas as nossas plataformas digitais.</p>
+          <div class="ods-card text-center">
+            <div class="ods-number mx-auto">10</div>
+            <h5>Inclusão</h5>
+            <p class="text-muted">Acessibilidade em nossas plataformas.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="ods-card">
-            <div class="ods-number">13</div>
+          <div class="ods-card text-center">
+            <div class="ods-number mx-auto">13</div>
             <h5>Ação Climática</h5>
-            <p>Conscientização ambiental através de narrativas impactantes e imersivas.</p>
+            <p class="text-muted">Conscientização ambiental ativa.</p>
           </div>
         </div>
       </div>
@@ -592,32 +450,27 @@
 
   <section id="sobre-o-jogo">
     <div class="container">
-      <div class="section-badge">
-        <i class="bi bi-stars"></i>
-        <h2 class="section-title mb-0">Sobre o Jogo</h2>
-        <i class="bi bi-stars"></i>
+      <div class="text-center mb-5">
+	<i class="bi bi-stars"></i>
+        <h2 class="section-title">Sobre o Jogo</h2>
+	<i class="bi bi-stars"></i>
+        <div class="section-underline"></div>
       </div>
-      <div class="section-underline mb-5"></div>
 
       <div class="game-card">
         <div class="row g-0">
           <div class="col-lg-7">
             <div class="game-info">
-              <div class="game-header">
-                <i class="bi bi-controller text-primary"></i>
-                <h3>StarQuest: Guardiões do Futuro</h3>
-              </div>
-              <p class="lead mb-4">
-                Uma aventura épica que combina ação, estratégia e educação. Explore galáxias e resolva desafios ambientais.
+              <h3>StarQuest: Guardiões do Futuro</h3>
+              <p class="lead mb-4 text-muted">
+                Uma aventura épica que combina ação, estratégia e educação para salvar o futuro.
               </p>
-              <ul class="list-unstyled">
-                <li><i class="bi bi-check2-circle me-2 text-primary"></i> Multiplayer cooperativo online</li>
-                <li><i class="bi bi-check2-circle me-2 text-primary"></i> Sistema de progressão sustentável</li>
-                <li><i class="bi bi-check2-circle me-2 text-primary"></i> Gráficos de última geração</li>
+              <ul class="list-unstyled fw-light">
+                <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Multiplayer cooperativo</li>
+                <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Progressão sustentável</li>
+                <li><i class="bi bi-check2 text-primary me-2"></i> Gráficos imersivos</li>
               </ul>
-              <a href="#contato" class="btn-primary-custom mt-4">
-                Jogue Agora <i class="bi bi-arrow-right ms-2"></i>
-              </a>
+              <a href="#contato" class="btn-primary-custom mt-4">Jogue Agora</a>
             </div>
           </div>
           <div class="col-lg-5">
@@ -630,32 +483,16 @@
     </div>
   </section>
 
-  <footer id="contato">
+  <footer id="contato" class="text-center">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="footer-brand">StarPlay Studio</div>
-          <p class="text-muted fw-light">Criando o futuro dos jogos,<br>uma estrela de cada vez.</p>
-        </div>
-        <div class="col-lg-4">
-          <p class="footer-heading">Navegação</p>
-          <ul class="list-unstyled footer-links">
-            <li class="mb-2"><a href="#inicio" class="text-decoration-none text-muted">Início</a></li>
-            <li class="mb-2"><a href="#quem-somos" class="text-decoration-none text-muted">Quem Somos</a></li>
-            <li class="mb-2"><a href="#sobre-o-jogo" class="text-decoration-none text-muted">O Jogo</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-4">
-          <p class="footer-heading">Contato</p>
-          <p class="text-muted fw-light">contato@starplaystudio.com</p>
-          <div class="d-flex gap-3 mt-3">
-            <a href="#" class="text-purple fs-5"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-purple fs-5"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
+      <div class="footer-brand justify-content-center">StarPlay Studio</div>
+      <p class="text-muted fw-light mb-4">Criando o futuro dos jogos, uma estrela de cada vez.</p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="#" class="text-purple fs-4"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-purple fs-4"><i class="bi bi-linkedin"></i></a>
       </div>
-      <div class="footer-bottom text-center text-muted">
-        <small>© 2026 StarPlay Studio. Todos os direitos reservados.</small>
+      <div class="footer-bottom">
+        <small class="text-muted">© 2026 StarPlay Studio. Todos os direitos reservados.</small>
       </div>
     </div>
   </footer>
