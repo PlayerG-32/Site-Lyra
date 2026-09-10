@@ -145,27 +145,29 @@
   <div class="container pb-5">
     <div class="row g-4">
       
-      <div class="col-12">
+    <div class="col-12">
         <div class="doc-card">
-          <div class="d-flex align-items-center gap-3 mb-4">
-            <div class="doc-icon"><i class="bi bi-file-earmark-richtext"></i></div>
-            <div>
-              <h3 class="mb-0">GDD - Game Design Document</h3>
-              <p class="text-muted mb-0">Documentação completa da mecânica, história e arte.</p>
+          <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="doc-icon"><i class="bi bi-file-earmark-richtext"></i></div>
+              <div>
+                <h3 class="mb-0">GDD - Game Design Document</h3>
+                <p class="text-muted mb-0">Documentação completa da mecânica, história e arte.</p>
+              </div>
             </div>
+            <a href="./gdd_lyra.pdf" class="btn-primary-custom" target="_blank">
+              <i class="bi bi-download"></i> Baixar PDF
+            </a>
           </div>
-          <div class="bg-light p-4 rounded-4" style="min-height: 200px; border: 2px dashed #ddd;">
-            <p class="text-center text-muted pt-5">
-              [Espaço para visualizar o GDD ou Link para o Google Docs/PDF]<br>
-              <a href="./gdd_lyra.pdf" class="btn-outline-custom" target="_blank" download="gdd_lyra.pdf">
-              Baixar PDF Completo
-                </a>
-              </a>
-            </p>
+          
+          <!-- Leitor de PDF integrado na página -->
+          <div style="width: 100%; height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid var(--purple-pale);">
+            <iframe src="./gdd_lyra.pdf" width="100%" height="100%" style="border:none;">
+              Seu navegador não suporta a exibição de PDFs. <a href="./gdd_lyra.pdf">Clique aqui para baixar.</a>
+            </iframe>
           </div>
         </div>
       </div>
-
       <div class="col-lg-8">
         <div class="doc-card h-100">
           <div class="d-flex align-items-center gap-3 mb-4">
